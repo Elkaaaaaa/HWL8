@@ -138,7 +138,7 @@ def login_dialog():
     login = input("Введите ваш логин:")
     passw = input("Введите ваш пароль:")
     data_read_req = read(
-        "c:\\Users\\nikkl\\OneDrive\\Рабочий стол\\GeekBrains\\Python\\Семинары\\L8\\users.txt",
+        file_users,
         id=login, actual_user=login)
     if data_read_req != -1:
         if data_read_req[1] == passw:
