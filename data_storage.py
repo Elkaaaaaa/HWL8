@@ -1,17 +1,17 @@
-# База пользователя 
-
-''''''
-'''login; password; familie; name; status; description'''
-
-'''lesson; login; homework'''
 import logger as log
 
+# База пользователя
+
+"""login; password; familie; name; status; description"""
+
+"""lesson; login; homework"""
+
 default_username = "None"
-default_filename = "C:\Python\Diagram_n_code\python_practice\\2_practice_8\\users.txt"
+default_filename = "C:\\Python\\Diagram_n_code\\python_practice\\2_practice_8\\users.txt"
 
 
 def data_read(filename=default_filename, id="", actual_user=default_username):
-    '''чтение строки записи из файла'''
+    """чтение строки записи из файла"""
     try:
         with open(filename, "r", encoding="utf-8") as file:
             lines = file.readlines()
@@ -41,8 +41,8 @@ def data_read(filename=default_filename, id="", actual_user=default_username):
 
 
 def data_change(filename=default_filename, id="", par=0, value="", actual_user=default_username):
-    ''''изменение поля в строке записи'''
-    ''''id - ключ для поиска записи в таблице, par - номер столбца в таблице, value - чем заменяем'''
+    """изменение поля в строке записи"""
+    """id - ключ для поиска записи в таблице, par - номер столбца в таблице, value - чем заменяем"""
     temp_output = ""  # изменённая строка
     try:
         with open(filename, "r", encoding="utf-8") as file:
@@ -59,6 +59,7 @@ def data_change(filename=default_filename, id="", par=0, value="", actual_user=d
             return -1
 
     # проверка - присутсвует ли изменяемая строка в файле
+    target_line = ""
     for line in lines:
         # строка в файле найдена
         if id in line:
@@ -90,8 +91,10 @@ def data_change(filename=default_filename, id="", par=0, value="", actual_user=d
         return 1
 
 
-def data_insert(filename=default_filename, id="", data=[], actual_user=default_username):
-    '''Вставка строки записи целиком'''
+def data_insert(filename=default_filename, id="", data=None, actual_user=default_username):
+    """Вставка строки записи целиком"""
+    if data is None:
+        data = []
     try:
         with open(filename, "r", encoding="utf-8") as file:
             lines = file.readlines()
@@ -162,7 +165,7 @@ def data_insert(filename=default_filename, id="", data=[], actual_user=default_u
 
 
 def data_remove(filename=default_filename, id="", actual_user=default_username):
-    '''удаление строки записи из файла'''
+    """удаление строки записи из файла"""
     try:
         with open(filename, "r", encoding="utf-8") as file:
             lines = file.readlines()
